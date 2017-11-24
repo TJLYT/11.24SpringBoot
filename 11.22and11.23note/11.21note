@@ -1,0 +1,73 @@
+.md 
+    Markdown是一种可以使用普通文本编辑器编写的轻量化标记语言，通过类似HTML的标记语法，它可以使普通文本内容具有一定的格式。该文档格式在github上有广泛应用，用于代替传统的txt文本，同时又比html简单，这样有注于专注文章内容。
+
+Git 的使用：
+	命令行
+		    mkdir 创建文件夹
+		    vi 创建文件
+		           ESC + ： + wq  退出vi编辑器
+		    git add readme.txt
+		            单个文件添加到本地仓库
+		    git add . 将当前文件夹下的所有文件提交到本地仓库
+		    git status 显示未提交的文件
+		    git commit -m "first commit" 添加修改备注
+		    git reset head^ 退回到上一个版本
+		    git reset --herd （加版本编码） 本地文件退回到上一个版本
+		    
+		    将本地仓库提交到网上仓库
+		    git remote add origin https://github.com/seonfang/Test2017.git
+		    git push -u origin master    注释：master指的是网上仓库的分支
+		
+		    git tag 在控制台打印出当前仓库的所有标签
+		    git tag -a v0.1.2 -m “0.1.2版本”   创建附注标签
+		    注意：本地仓库和网上仓库是一一对应得关系
+		
+		    添加mysql配置文件
+		    <dependency>
+		          <groupId>mysql</groupId>
+		          <artifactId>mysql-connector-java</artifactId>
+		          <version>5.1.44</version>
+		      </dependency>
+		生成文件
+    选择文件 -> run as -> maven install 
+依赖冲突选择
+    （大多是日志包）
+    默认选择
+        首先根据冲突文件在引用包中的层次，留下层次少的
+        层次相同，则就近选择
+    自主选择
+        使用标签exclusion 选取优先级低的jar包
+
+    <exclusions>
+                    <exclusion>
+                             <groupId></groupId>
+                             <artifactId></artifactId>
+                    </exclusion>
+              </exclusions>
+
+
+		练习 当需要导入的包不是maven包时 怎么在maven项目中使用？？
+		    https://www.cnblogs.com/lixuwu/p/5855031.html
+		    方法一.  1.将制定jar包导入到本地maven库中
+		                mvn install:install-file -Dfile=aaa.jar -DgroupId=org.aaa -DartifactId=fact.aaa -Dversion=1.0 -Dpackaging=jar
+		            
+		         2.pom.xml中添加
+		<dependency>
+		                <groupId>org.aaa</groupId>
+		                <artifactId>fact.aaa</artifactId>
+		                <version>1.0</version>
+		    </dependency>
+		        
+		    方法二：
+		        1.创建lib包 将需要的jar放入
+		        2.配置pom.xml 
+		<dependency>
+		    <groupId>bbb</groupId>
+		                   <artifactId>fact.bbb</artifactId>
+		                   <version>1.0</version>
+		　　<scope>system</scope>
+		　　<systemPath>${project.basedir}/lib/bbb.jar</systemPath>
+		</dependency>
+		
+		
+		

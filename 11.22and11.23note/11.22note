@@ -1,0 +1,37 @@
+Java语言的新特性
+Lambda ：
+
+	Lambda允许把函数作为一个方法的参数（函数作为参数传递进方法中），或者把代码看成数据；
+	在最简单的形式中，一个lambda可以由用逗号分隔的参数列表、–>符号与函数体三部分表示。
+	
+	例如：Arrays.asList( "a", "b", "d" ).forEach( e -> System.out.println( e ) );
+	请注意参数e的类型是由编译器推测出来的。同时，你也可以通过把参数类型与参数包括在括号中的形式直接给出参数的类型：
+	Arrays.asList( "a", "b", "d" ).forEach( ( String e ) -> System.out.println( e ) );
+	E:\TaiJi\workspace\sts\lambda-java8
+	
+	
+	函数体包括三部分
+Comparator<String> c1  = (String s1, String s2) -> Integer.compare(s1.length(), s2.length());
+1..(String s1, String s2) ：第一部分为一个括号内用逗号分隔的形式参数，参数是函数式接口里面方法的参数；
+2. ->   第二部分为一个箭头符号：->；
+3.Integer.compare(s1.length(), s2.length()); 第三部分为方法体，可以是表达式和代码块。
+		
+		
+		olamada函数式样式 （args）-> {body}
+		
+		o引用方式
+		静态方法引用
+		特定对象的实例方法引用
+		类对象的实例方法引用（java中只能用类引用静态的方法）
+		构造函数引用
+		ojava.util.function
+		Predicate<T> T为传入值，返回false或true
+		Function<T, R> T为传入参数 R为返回值
+		Consumer<T> 只有传入值，没有返回值
+		Supplier<T> 没有传入参数，T为返回数值
+		Stream
+		
+		o特性
+		Stream不存储数据，不修改数据
+		充分利用lambda
+		容易将结果转换为array，list

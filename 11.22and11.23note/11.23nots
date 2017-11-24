@@ -1,0 +1,6 @@
+1.配置文件
+2.配置maven ，先清空User里的所有文件，然后去下载Nexus，然后打开控制台，进入STS工作空间，
+     输入mvn-Pnexus dependency:resolve.
+3.研究@Componect
+4.研究@configuration
+5.研究@Bean
